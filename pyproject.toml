@@ -10,6 +10,8 @@ python = "^3.10"
 pydantic = "^1.10.4"
 fastapi = "^0.89.1"
 uvicorn = {extras = ["standerd"], version = "^0.20.0"}
+pytest = "^7.2.1"
+sqlalchemy = "^2.0.0"
 
 
 [build-system]
