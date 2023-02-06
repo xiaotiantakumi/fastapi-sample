@@ -32,19 +32,31 @@ pyproject.toml もディレクトリ共有されています。
 ## パッケージの追加方法
 
 まずはコンテナーを起動させておく
+
 ```
 docker-compose up -d
 ```
 
 起動中のコンテナーに入る
 
+- まず起動中のコンテナーを確認する。
+
+```
+docker ps -a
+```
+
+- コンテナーの中に入る
+
 ```
 docker exec -it <container id> /bin/bash
 ```
+
 インストールしたいパッケージを追加する
+
 ```
 poetry add sqlalchemy
 ```
+
 # その他
 
 Docker イメージとコンテナーの操作のチートシートとして使っているだけ。
@@ -105,9 +117,11 @@ docker rm -f $(docker ps -a -q)
 
 # docker compose
 
+```
 docker-compose down
 docker-compose build --no-cache
 docker-compose up -d
+```
 
 # 使用していない volumes を削除
 

@@ -34,13 +34,13 @@ WORKDIR /app
 # イメージ作成時にpyproject.tomlがないのでコピーしておく。
 COPY pyproject.toml /app/
 # 「--only main」オプションは、「pyproject.toml」に記述されている「[tool.poetry.dependencies]」セクションにのみ依存関係をインストールします。
-RUN poetry install --only main
-
+RUN poetry install
+#RUN poetry install --only main
 # src配下でpoetryを実行したいので移動しておく
-WORKDIR /app/src
-
+WORKDIR /app
+#WORKDIR /app/src/api
 # Docker イメージが実行されるときにホスト側に公開するポート番号を指定します。
 # これにより、Docker コンテナが起動した際に、外部からアクセスできるようになります。こ80番ポートが公開されます。
 EXPOSE 80
 # uvicornで--reloadすることによりアプリケーションの変更がホットリロードされるようになる
-CMD ["poetry", "run", "uvicorn", "app:app", "--host", "0.0.0.0", "--port", "80","--reload"]
+CMD ["poetry", "run", "uvicorn", "src.api.main:app", "--host", "0.0.0.0", "--port", "80","--reload"]
