@@ -21,8 +21,17 @@ ENV PATH="$POETRY_HOME/bin:$PATH"
 #  --no-install-recommends オプションは、依存関係としてインストールされるが必要ではないパッケージをインストールしないようにします。-yオプションは、インストール時に確認を求めないようにします。
 # apt clean: システムから不要なパッケージを削除します。これにより、Dockerイメージのサイズを小さくできます
 RUN apt update && \
-    apt install --no-install-recommends -y curl && \
+    apt install --no-install-recommends -y curl openssh-server && \
+    mkdir /var/run/sshd && \
     apt clean
+
+#RUN echo 'root:rootpassword' | chpasswd
+#
+#RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+#
+#EXPOSE 22
+#
+#CMD ["/usr/sbin/sshd", "-D"]
 
 # poetryのインストール
 RUN curl --ssl https://install.python-poetry.org | python3

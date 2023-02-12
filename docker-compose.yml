@@ -4,7 +4,10 @@ services:
     build: .
 #    command: python src/api/main.py
     ports:
+      - "2222:22"
       - "80:80"
+      - "8000:8000"
+      - "8419:8419"
     volumes:
       - "./src:/app/src"
       # :cachedで変更が即時反映されるようにしておく。
