@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-pydantic = "^1.10.4"
+pydantic = "^1.10.13"
 fastapi = "^0.89.1"
 uvicorn = {extras = ["standerd"], version = "^0.20.0"}
 pytest = "^7.2.1"
